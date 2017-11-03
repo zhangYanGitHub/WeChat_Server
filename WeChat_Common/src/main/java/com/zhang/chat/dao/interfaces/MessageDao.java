@@ -11,6 +11,6 @@ public interface MessageDao {
 
     void updateMessage(List<Message> list);
 
-
+    List<Message> getMessageRecord(long user_id);
     void addMessage(Message message);
 }

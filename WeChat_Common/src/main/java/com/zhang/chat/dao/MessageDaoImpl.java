@@ -39,6 +39,11 @@ public class MessageDaoImpl extends BaseDao implements MessageDao {
     }
 
     @Override
+    public List<Message> getMessageRecord(long user_id) {
+        return null;
+    }
+
+    @Override
     public void addMessage(Message message) {
         sessionFactory.getCurrentSession().save(message);
     }
