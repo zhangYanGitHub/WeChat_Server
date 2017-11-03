@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="WeChat_Entity" />
+        <module name="WeChat_Interface" />
+        <module name="WeChat_Netty" />
+        <module name="WeChat_Web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="WeChat" target="1.6" />
+      <module name="WeChat_Entity" target="1.6" />
+      <module name="WeChat_Interface" target="1.6" />
+      <module name="WeChat_Netty" target="1.6" />
+      <module name="WeChat_Web" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

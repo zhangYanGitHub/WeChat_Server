@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="app" namespace="/app" extends="json-default,all">
+        <action name="noUser_id" class="com.zhang.chat.intercepter.ErrorPermissionJSON" method="noUser_id">
+            <result type="json">
+                <param name="root">baseFeed</param>
+                <param name="ignoreHierarchy">false</param>
+            </result>
+        </action>
+        <action name="noToken" class="com.zhang.chat.intercepter.ErrorPermissionJSON" method="noToken">
+            <result type="json">
+                <param name="root">baseFeed</param>
+                <param name="ignoreHierarchy">false</param>
+            </result>
+        </action>
+    </package>
+</struts>

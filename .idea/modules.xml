@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/WeChat.iml" filepath="$PROJECT_DIR$/WeChat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeChat_Common/WeChat_Common.iml" filepath="$PROJECT_DIR$/WeChat_Common/WeChat_Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeChat_Interface/WeChat_Interface.iml" filepath="$PROJECT_DIR$/WeChat_Interface/WeChat_Interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeChat_Netty/WeChat_Netty.iml" filepath="$PROJECT_DIR$/WeChat_Netty/WeChat_Netty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeChat_Web/WeChat_Web.iml" filepath="$PROJECT_DIR$/WeChat_Web/WeChat_Web.iml" />
+    </modules>
+  </component>
+</project>

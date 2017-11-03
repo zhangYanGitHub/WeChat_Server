@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- 配置全局拦截器 -->
+    <package name="all" extends="struts-default">
+        <interceptors>
+            <!-- 定义权限控制拦截器 -->
+            <interceptor name="authority"
+                         class="com.zhang.chat.intercepter.LoginInterceptor"/>
+            <!-- 定义一个包含权限控制的拦截器栈 -->
+            <interceptor-stack name="mydefault">
+                <interceptor-ref name="authority">
+                    <param name="excludeMethods">login,register,forgetPassword</param>
+                </interceptor-ref>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- 定义默认拦截器 -->
+        <default-interceptor-ref name="mydefault"/>
+
+        <global-results>
+            <result name="noToken" type="redirect">/app/noToken.action</result>
+            <result name="noUser_id" type="redirect">/app/noUser_id.action</result>
+        </global-results>
+
+    </package>
+    <include file="login.xml"/>
+    <constant name="struts.devMode" value="false"/>
+    <constant name="struts.objectFactory" value="spring"/>
+
+    <package name="user" namespace="/user" extends="json-default,all">
+
+        <action name="login" class="com.zhang.chat.action.UserAction" method="login">
+            <result type="json">
+                <param name="root">baseFeed</param>
+            </result>
+        </action>
+
+
+        <action name="update" class="com.zhang.chat.action.UserAction" method="update">
+            <result type="json">
+                <param name="root">baseFeed</param>
+            </result>
+        </action>
+        <action name="register" class="com.zhang.chat.action.UserAction" method="register">
+            <result type="json">
+                <param name="root">baseFeed</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="file" namespace="/file" extends="json-default">
+
+        <action name="upload" class="com.zhang.chat.action.FileAction" method="uploadFile">
+            <result type="json">
+                <param name="root">baseFeed</param>
+            </result>
+        </action>
+
+    </package>
+    <package name="message" namespace="/message" extends="json-default">
+        <!--离线消息-->
+        <action name="getMessageList" class="com.zhang.chat.action.MessageAction" method="getMessageList">
+            <result type="json">
+                <param name="root">baseFeed</param>
+            </result>
+        </action>
+
+    </package>
+    <package name="verification" namespace="/verification" extends="json-default">
+
+
+
+    </package>
+    <package name="friend" namespace="/friend" extends="json-default,all">
+        <!--我的联系人列表-->
+        <action name="getFiendList" class="com.zhang.chat.action.FriendAction" method="getFiendList">
+            <result type="json">
+                <param name="root">baseFeed</param>
+            </result>
+        </action>
+        <!--添加朋友验证-->
+        <action name="getVerificationList" class="com.zhang.chat.action.VerificationAction"
+                method="getVerificationList">
+            <result type="json">
+                <param name="root">baseFeed</param>
+            </result>
+        </action>
+        <!--搜索朋友-->
+        <action name="searchFriend" class="com.zhang.chat.action.VerificationAction"
+                method="search">
+            <result type="json">
+                <param name="root">search</param>
+            </result>
+        </action>
+    </package>
+</struts>
