@@ -3,7 +3,6 @@ package com.zhang.chat.netty.service;
 import com.zhang.chat.netty.protocol.MessageHolder;
 import com.zhang.chat.netty.queue.TaskQueue;
 import com.zhang.chat.utils.LogUtils;
-import org.apache.log4j.Logger;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;

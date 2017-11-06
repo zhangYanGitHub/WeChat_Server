@@ -30,7 +30,9 @@ public class HeaderServiceImpl extends BaseService<Header> implements HeaderServ
             }
         }
         Header header1 = headerDao.selectByM_id(header);
-        token.put(header1.getM_id(), header1);
+        if(header1 != null){
+            token.put(header1.getM_id(), header1);
+        }
         return header1;
     }
 
@@ -42,5 +44,14 @@ public class HeaderServiceImpl extends BaseService<Header> implements HeaderServ
         }
         headerDao.addHeader(header);
 
+    }
+
+    @Override
+    public void update(Header header) {
+        if (header == null || StrUtil.isBlank(header.getToken())) {
+            LogUtils.error(HeaderServiceImpl.class, "header == NULL || StrUtil.isBlank(header.getToken()) == TRUE");
+            return;
+        }
+        headerDao.update(header);
     }
 }

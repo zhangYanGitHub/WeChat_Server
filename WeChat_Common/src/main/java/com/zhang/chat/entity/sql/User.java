@@ -53,8 +53,9 @@ public class User {
     public User(long m_Id) {
         M_Id = m_Id;
     }
+
     public User(long user_id, String user_name, int user_sex, String user_desc, String user_phone,
-                String user_img_face_path,String u_NationID,String U_Province,String U_City) {
+                String user_img_face_path, String u_NationID, String U_Province, String U_City) {
         this.M_Id = user_id;
         this.user_name = user_name;
         this.user_sex = user_sex;
@@ -64,6 +65,14 @@ public class User {
         this.u_NationID = u_NationID;
         this.U_Province = U_Province;
         this.U_City = U_City;
+    }
+
+    public User(int user_sex,String user_phone,String user_real_name,String user_password, String user_name) {
+        this.user_sex = user_sex;
+        this.user_phone = user_phone;
+        this.user_real_name = user_real_name;
+        this.user_password = user_password;
+        this.user_name = user_name;
     }
 
     @Id
@@ -202,5 +211,51 @@ public class User {
 
     public void setU_UserState(int u_UserState) {
         U_UserState = u_UserState;
+    }
+
+
+    public static final int UPDATE_NAME = 1;
+    public static final int UPDATE_ACCOUNT = 2;
+    public static final int UPDATE_SEX = 3;
+    public static final int UPDATE_IMGFACEPATH = 4;
+    public static final int UPDATE_PHONE = 5;
+    public static final int UPDATE_PASSWORD = 6;
+    public static final int UPDATE_DESC = 7;
+    public static final int UPDATE_ADDRESS = 8;
+
+    private int type;
+
+    @Transient
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "M_Id=" + M_Id +
+                ", uu_id=" + uu_id +
+                ", user_name='" + user_name + '\'' +
+                ", user_sex=" + user_sex +
+                ", user_real_name='" + user_real_name + '\'' +
+                ", user_password='" + user_password + '\'' +
+                ", user_desc='" + user_desc + '\'' +
+                ", user_phone='" + user_phone + '\'' +
+                ", user_account='" + user_account + '\'' +
+                ", user_email='" + user_email + '\'' +
+                ", user_img_face_path='" + user_img_face_path + '\'' +
+                ", user_register_date=" + user_register_date +
+                ", u_NationID='" + u_NationID + '\'' +
+                ", U_Province='" + U_Province + '\'' +
+                ", U_City='" + U_City + '\'' +
+                ", U_FriendshipPolicy=" + U_FriendshipPolicy +
+                ", U_UserState=" + U_UserState +
+                ", type=" + type +
+                '}';
     }
 }

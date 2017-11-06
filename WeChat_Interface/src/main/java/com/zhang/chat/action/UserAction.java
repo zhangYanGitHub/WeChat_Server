@@ -3,7 +3,6 @@ package com.zhang.chat.action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.zhang.chat.base.BaseAction;
 import com.zhang.chat.entity.response.BaseFeed;
-import com.zhang.chat.entity.request.RequestUser;
 import com.zhang.chat.entity.response.MainData;
 import com.zhang.chat.entity.sql.User;
 import com.zhang.chat.service.interfaces.UserDataService;
@@ -16,8 +15,8 @@ import javax.annotation.Resource;
 
 @Controller
 @Scope("prototype")
-public class UserAction extends BaseAction implements ModelDriven<RequestUser> {
-    RequestUser requestUser = new RequestUser();
+public class UserAction extends BaseAction implements ModelDriven<User> {
+    User requestUser = new User();
     BaseFeed<User> baseFeed;
     BaseFeed<MainData> mainDataBaseFeed;
     @Resource
@@ -26,7 +25,7 @@ public class UserAction extends BaseAction implements ModelDriven<RequestUser> {
     UserDataService userDataService;
 
     @Override
-    public RequestUser getModel() {
+    public User getModel() {
         return requestUser;
     }
 
@@ -40,7 +39,7 @@ public class UserAction extends BaseAction implements ModelDriven<RequestUser> {
 
     public String login() throws Exception {
         mainDataBaseFeed = userService.login(requestUser);
-        if (baseFeed.getCode() == Constant.RESPONSE_CODE_200) {
+        if (mainDataBaseFeed.getCode() == Constant.RESPONSE_CODE_200) {
             mainDataBaseFeed = userDataService.getUserData(requestUser);
         }
         return "success";

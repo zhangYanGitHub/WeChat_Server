@@ -35,17 +35,33 @@ public class UserDataServiceImpl extends BaseService<MainData> implements UserDa
 
 
     @Override
-    public BaseFeed<MainData> getUserData(RequestUser requestUser) {
+    public BaseFeed<MainData> getUserData(User requestUser) {
         long m_id = requestUser.getM_Id();
         User user = userDao.get(requestUser);
         List<Friend> fiendList = friendDao.getFiendList(m_id);
         ResList<Verification> list = verificationDao.getList(m_id);
         List<Message> message = messageDao.getMessage(m_id);
+        List<Message> messageRecord = messageDao.getMessageRecord(m_id);
+        int number = 0;
+        for (Message message1 : messageRecord) {
+            MainData.MessageList messageList = new MainData.MessageList();
+            messageList.setMessage(message1);
+
+            for (Message message2 : message) {
+                if (message1 == null || message2 == null) continue;
+                if (message1.getM_FromUserID() == message2.getM_FromUserID()
+                        && message1.getM_ToUserID() == message2.getM_ToUserID()) {
+                    number++;
+                }
+            }
+            messageList.setNumber(number);
+        }
 
         MainData mainData = new MainData();
         mainData.setFriends(fiendList);
         mainData.setMessageList(message);
         mainData.setVerifications(list.getList());
+        mainData.setMessageList(messageRecord);
         mainData.setUser(user);
 
         feed.setData(mainData);

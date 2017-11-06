@@ -1,16 +1,17 @@
 package com.zhang.chat.service;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.base.BaseService;
 import com.zhang.chat.dao.interfaces.UserDao;
 import com.zhang.chat.entity.request.RequestUser;
+import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.entity.response.MainData;
 import com.zhang.chat.entity.sql.Header;
 import com.zhang.chat.entity.sql.User;
 import com.zhang.chat.service.interfaces.HeaderService;
 import com.zhang.chat.service.interfaces.UserService;
 import com.zhang.chat.utils.Constant;
+import com.zhang.chat.utils.LogUtils;
 import com.zhang.chat.utils.StrUtil;
 import com.zhang.chat.utils.TokenUtil;
 import org.apache.struts2.ServletActionContext;
@@ -58,6 +59,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
             //产生token
             createToken(user);
 
+            LogUtils.info(this.getClass(), "登录成功  " + user.toString());
             //登录成功
             feed.setInfo("登录成功");
             feed.setData(null);
@@ -85,7 +87,12 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         header.setM_id(user.getM_Id());
         String token = TokenUtil.genRandomToken();
         header.setToken(token);
-        headerService.add(header);
+        Header header1 = headerService.selectByM_id(header);
+        if(header1 == null) {
+            headerService.add(header);
+        }else {
+            headerService.update(header);
+        }
         Cookie token1 = new Cookie("token", token);
         response.addCookie(token1);
 
@@ -93,30 +100,30 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 
     @Override
-    public BaseFeed<User> register(RequestUser requestUser) {
+    public BaseFeed<User> register(User requestUser) {
         if (requestUser == null
                 || StrUtil.isBlank(requestUser.getUser_phone())
                 || StrUtil.isBlank(requestUser.getUser_password())
                 || StrUtil.isBlank(requestUser.getUser_real_name())
                 || StrUtil.isBlank(requestUser.getUser_name())
-                || requestUser.getUser_sex() != -1) {
+                || requestUser.getUser_sex() == -1) {
             //参数不齐
             return Parameter_irregularity();
         }
-        User user = requestUser;
-        user.setUser_register_date(new Date().getTime());
-        user = userDao.register(user);
-        long uu_Id = user.getM_Id() + 10000;
-        user.setUu_id(uu_Id);
-        userDao.update(user);
-        feed.setCode(Constant.RESPONSE_ERROR_CODE_100);
-        feed.setData(user);
+        requestUser.setUser_register_date(new Date().getTime());
+        requestUser = userDao.register(requestUser);
+        long uu_Id = requestUser.getM_Id() + 10000;
+        requestUser.setUu_id(uu_Id);
+        userDao.update(requestUser);
+        feed.setCode(Constant.RESPONSE_CODE_200);
+        feed.setData(requestUser);
         feed.setInfo("注册成功");
+        LogUtils.info(this.getClass(), "注册成功  " + requestUser.toString());
         return feed;
     }
 
     @Override
-    public BaseFeed<User> update(RequestUser requestUser) {
+    public BaseFeed<User> update(User requestUser) {
         if (requestUser == null || requestUser == null) {
             //参数不齐
             return Parameter_irregularity();
@@ -124,16 +131,16 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         User user = userDao.get(requestUser);
         User user1 = requestUser;
         switch (requestUser.getType()) {
-            case RequestUser.UPDATE_NAME:
+            case User.UPDATE_NAME:
                 user.setUser_name(user1.getUser_name());
                 break;
-            case RequestUser.UPDATE_ACCOUNT:
+            case User.UPDATE_ACCOUNT:
                 user.setUser_account(user1.getUser_account());
                 break;
-            case RequestUser.UPDATE_SEX:
+            case User.UPDATE_SEX:
                 user.setUser_sex(user1.getUser_sex());
                 break;
-            case RequestUser.UPDATE_IMGFACEPATH:
+            case User.UPDATE_IMGFACEPATH:
                 //删除原来的头像
                 ActionContext ac = ActionContext.getContext();
                 ServletContext sc = (ServletContext) ac.get(ServletActionContext.SERVLET_CONTEXT);
@@ -153,16 +160,16 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
                     user.setUser_img_face_path(user1.getUser_img_face_path());
                 }
                 break;
-            case RequestUser.UPDATE_PHONE:
+            case User.UPDATE_PHONE:
                 user.setUser_phone(user1.getUser_phone());
                 break;
-            case RequestUser.UPDATE_PASSWORD:
+            case User.UPDATE_PASSWORD:
                 user.setUser_phone(user1.getUser_phone());
                 break;
-            case RequestUser.UPDATE_DESC:
+            case User.UPDATE_DESC:
                 user.setUser_desc(user1.getUser_desc());
                 break;
-            case RequestUser.UPDATE_ADDRESS:
+            case User.UPDATE_ADDRESS:
                 user.setU_NationID(user1.getU_NationID());
                 user.setU_Province(user1.getU_Province());
                 user.setU_City(user1.getU_City());

@@ -18,10 +18,10 @@ public interface UserService {
     /**
      * 注册
      */
-    BaseFeed<User> register(RequestUser requestUser);
+    BaseFeed<User> register(User requestUser);
 
     /**
      * 更新用户信息
      */
-    BaseFeed<User> update(RequestUser requestUser);
+    BaseFeed<User> update(User requestUser);
 }

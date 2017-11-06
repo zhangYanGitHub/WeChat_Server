@@ -20,7 +20,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     @Override
     public User selectByUu_idAndPassword(User user) {
         List<User> list = sessionFactory.getCurrentSession()
-                .createQuery(" from com.zhang.chat.entity.sql.User user where user.uu_id = ? ")
+                .createQuery(" select new com.zhang.chat.entity.sql.User(user.m_Id) from com.zhang.chat.entity.sql.User user where user.uu_id = ? ")
                 .setParameter(0, user.getUu_id()).list();
         if (ListUtil.isEmpty(list)) return null;
         User user1 = list.get(0);

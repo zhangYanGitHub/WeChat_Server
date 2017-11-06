@@ -9,7 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>WeChat_Entity</artifactId>
+    <artifactId>WeChat_Common</artifactId>
+    <dependencies>
 
+
+    </dependencies>
 
 </project>

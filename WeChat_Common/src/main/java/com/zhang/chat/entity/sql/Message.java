@@ -10,8 +10,8 @@ import javax.persistence.*;
  * @Modified By:
  */
 @Entity
-@Table(name ="u_message_info")
-public class Message  {
+@Table(name = "u_message_info")
+public class Message implements Comparable<Message> {
     /**
      * (消息ID)    主键，自增
      */
@@ -19,31 +19,32 @@ public class Message  {
     /**
      * 消息内容
      */
-    private  String M_PostMessages;
+    private String M_PostMessages;
     /**
      * 1  发送中
      * 2  发送成功
      * 3  发送失败
      * 4  发送成功 离线未读
      */
-    private  int M_status;
+    private int M_status;
     /**
      * (发送时间)    默认值
      */
-    private  String M_Time;
+    private String M_Time;
     /**
      * (消息类型ID)    外键
      */
-    private  int M_MessagesTypeID;
+    private int M_MessagesTypeID;
     /**
      * (发送者ID)指向用户表    外键
      */
-    private  long M_ToUserID;
+    private long M_ToUserID;
     /**
      * (接收者ID)指向用户表    外键
      */
-    private  long M_FromUserID;
+    private long M_FromUserID;
 
+    private boolean isLatest;
 
     public Message() {
     }
@@ -56,6 +57,14 @@ public class Message  {
         M_MessagesTypeID = m_MessagesTypeID;
         M_ToUserID = m_ToUserID;
         M_FromUserID = m_FromUserID;
+    }
+
+    public void setLatest(boolean latest) {
+        isLatest = latest;
+    }
+
+    public boolean isLatest() {
+        return isLatest;
     }
 
     @Id
@@ -114,5 +123,11 @@ public class Message  {
 
     public void setM_FromUserID(long m_FromUserID) {
         M_FromUserID = m_FromUserID;
+    }
+
+    @Override
+    public int compareTo(Message o) {
+        if (o == null) return -1;
+        return (int) (Long.parseLong(this.M_Time) - Long.parseLong(o.getM_Time()));
     }
 }

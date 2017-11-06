@@ -13,4 +13,6 @@ public interface HeaderService {
     Header selectByM_id(Header header);
 
     void add(Header header);
+
+    void update(Header header);
 }

@@ -15,4 +15,6 @@ public interface HeaderDao {
      * @param header
      */
     void addHeader(Header header);
+
+    void update(Header header);
 }

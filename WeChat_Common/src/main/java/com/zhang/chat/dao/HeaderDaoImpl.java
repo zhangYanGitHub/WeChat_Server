@@ -14,15 +14,17 @@ public class HeaderDaoImpl extends BaseDao implements HeaderDao {
 
     @Override
     public Header selectByM_id(Header header) {
-
         Header header1 = (Header) sessionFactory.getCurrentSession().get(Header.class, header.getM_id());
-        sessionFactory.getCurrentSession().close();
         return header1;
     }
 
     @Override
     public void addHeader(Header header) {
         Header header1 = (Header) sessionFactory.getCurrentSession().save(header);
-        sessionFactory.getCurrentSession().close();
+    }
+
+    @Override
+    public void update(Header header) {
+        Header header1 = (Header) sessionFactory.getCurrentSession().merge(header);
     }
 }
