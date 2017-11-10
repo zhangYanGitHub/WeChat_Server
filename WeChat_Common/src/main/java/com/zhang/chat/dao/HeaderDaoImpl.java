@@ -20,11 +20,11 @@ public class HeaderDaoImpl extends BaseDao implements HeaderDao {
 
     @Override
     public void addHeader(Header header) {
-        Header header1 = (Header) sessionFactory.getCurrentSession().save(header);
+         sessionFactory.getCurrentSession().save(header);
     }
 
     @Override
     public void update(Header header) {
-        Header header1 = (Header) sessionFactory.getCurrentSession().merge(header);
+         sessionFactory.getCurrentSession().merge(header);
     }
 }

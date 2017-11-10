@@ -15,6 +15,7 @@
     <context:component-scan base-package="com.zhang.chat.service"/>
     <context:component-scan base-package="com.zhang.chat.dao"/>
 
+    <bean id="ApplicationContext" class="com.zhang.chat.app.ApplicationContext"></bean>
     <!-- data connection setting -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${database.driverClassName}"></property>

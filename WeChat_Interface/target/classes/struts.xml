@@ -39,7 +39,7 @@
             <result type="json">
                 <param name="root">mainDataBaseFeed</param>
             </result>
-        </action><action name="userData" class="com.zhang.chat.action.UserDataAction" method="getUserData">
+        </action><action name="getUserData" class="com.zhang.chat.action.UserDataAction" method="getUserData">
             <result type="json">
                 <param name="root">baseFeed</param>
             </result>

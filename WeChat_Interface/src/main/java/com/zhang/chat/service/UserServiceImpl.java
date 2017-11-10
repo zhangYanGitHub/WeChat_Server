@@ -3,7 +3,6 @@ package com.zhang.chat.service;
 import com.opensymphony.xwork2.ActionContext;
 import com.zhang.chat.base.BaseService;
 import com.zhang.chat.dao.interfaces.UserDao;
-import com.zhang.chat.entity.request.RequestUser;
 import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.entity.response.MainData;
 import com.zhang.chat.entity.sql.Header;
@@ -62,7 +61,9 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
             LogUtils.info(this.getClass(), "登录成功  " + user.toString());
             //登录成功
             feed.setInfo("登录成功");
-            feed.setData(null);
+            MainData mainData = new MainData();
+            mainData.setUser(user);
+            feed.setData(mainData);
             feed.setCode(Constant.RESPONSE_CODE_200);
         } else {
             //密码错误
@@ -84,13 +85,13 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
     private void createToken(User user) {
         HttpServletResponse response = ServletActionContext.getResponse();
         Header header = new Header();
-        header.setM_id(user.getM_Id());
+        header.setM_id(user.getM_id());
         String token = TokenUtil.genRandomToken();
         header.setToken(token);
         Header header1 = headerService.selectByM_id(header);
-        if(header1 == null) {
+        if (header1 == null) {
             headerService.add(header);
-        }else {
+        } else {
             headerService.update(header);
         }
         Cookie token1 = new Cookie("token", token);
@@ -112,7 +113,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         }
         requestUser.setUser_register_date(new Date().getTime());
         requestUser = userDao.register(requestUser);
-        long uu_Id = requestUser.getM_Id() + 10000;
+        long uu_Id = requestUser.getM_id() + 10000;
         requestUser.setUu_id(uu_Id);
         userDao.update(requestUser);
         feed.setCode(Constant.RESPONSE_CODE_200);

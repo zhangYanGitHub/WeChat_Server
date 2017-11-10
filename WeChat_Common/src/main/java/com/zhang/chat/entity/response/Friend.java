@@ -42,6 +42,68 @@ public class Friend {
      */
     private long f_friend_groups_id;
 
+    /**
+     * 是否 验证通过
+     */
+    private boolean friend_state = true;
+
+    public void setFriend_state(boolean friend_state) {
+        this.friend_state = friend_state;
+    }
+
+    public boolean isFriend_state() {
+        return friend_state;
+    }
+
+    public Friend(long user_id, String user_name, int user_sex, String user_desc, String user_phone,
+                  String user_img_face_path, String f_friend_type_id, long f_friend_groups_id
+            , String U_NationID, String U_Province, String U_City, boolean friend_state) {
+        this.user_id = user_id;
+        this.user_name = user_name;
+        this.user_sex = user_sex;
+        this.user_desc = user_desc;
+        this.user_phone = user_phone;
+        this.user_img_face_path = user_img_face_path;
+        this.f_friend_type_id = f_friend_type_id;
+        this.f_friend_groups_id = f_friend_groups_id;
+        this.u_NationID = U_NationID;
+        this.U_Province = U_Province;
+        this.U_City = U_City;
+        this.friend_state = friend_state;
+    }
+
+    public Friend(UserFriend user, User friend) {
+        user_id = friend.getM_id();
+        user_name = friend.getUser_name();
+        user_sex = friend.getUser_sex();
+        user_desc = friend.getUser_desc();
+        user_img_face_path = friend.getUser_img_face_path();
+        user_phone = friend.getUser_phone();
+        f_friend_type_id = friend.getUser_name();
+        f_friend_groups_id = user.getF_friend_groups_id();
+        this.u_NationID = friend.getU_NationID();
+        this.U_Province = friend.getU_Province();
+        this.U_City = friend.getU_City();
+        this.friend_state = user.getFriend_state();
+    }
+
+    @Override
+    public String toString() {
+        return "Friend{" +
+                "user_id=" + user_id +
+                ", user_name='" + user_name + '\'' +
+                ", user_sex=" + user_sex +
+                ", user_desc='" + user_desc + '\'' +
+                ", user_phone='" + user_phone + '\'' +
+                ", user_account='" + user_account + '\'' +
+                ", user_img_face_path='" + user_img_face_path + '\'' +
+                ", u_NationID='" + u_NationID + '\'' +
+                ", U_Province='" + U_Province + '\'' +
+                ", U_City='" + U_City + '\'' +
+                ", f_friend_type_id='" + f_friend_type_id + '\'' +
+                ", f_friend_groups_id=" + f_friend_groups_id +
+                '}';
+    }
 
     public String getU_NationID() {
         return u_NationID;
@@ -65,54 +127,6 @@ public class Friend {
 
     public void setU_City(String u_City) {
         U_City = u_City;
-    }
-
-    public Friend(long user_id, String user_name, int user_sex, String user_desc, String user_phone,
-                  String user_img_face_path, String f_friend_type_id, long f_friend_groups_id
-                ,String U_NationID,String U_Province,String U_City) {
-        this.user_id = user_id;
-        this.user_name = user_name;
-        this.user_sex = user_sex;
-        this.user_desc = user_desc;
-        this.user_phone = user_phone;
-        this.user_img_face_path = user_img_face_path;
-        this.f_friend_type_id = f_friend_type_id;
-        this.f_friend_groups_id = f_friend_groups_id;
-        this.u_NationID = U_NationID;
-        this.U_Province = U_Province;
-        this.U_City = U_City;
-    }
-
-    public Friend(UserFriend user, User friend) {
-        user_id = friend.getM_Id();
-        user_name = friend.getUser_name();
-        user_sex = friend.getUser_sex();
-        user_desc = friend.getUser_desc();
-        user_img_face_path = friend.getUser_img_face_path();
-        user_phone = friend.getUser_phone();
-        f_friend_type_id = friend.getUser_name();
-        f_friend_groups_id = user.getF_friend_groups_id();
-        this.u_NationID = friend.getU_NationID();
-        this.U_Province =friend.getU_Province();
-        this.U_City = friend.getU_City();
-    }
-
-    @Override
-    public String toString() {
-        return "Friend{" +
-                "user_id=" + user_id +
-                ", user_name='" + user_name + '\'' +
-                ", user_sex=" + user_sex +
-                ", user_desc='" + user_desc + '\'' +
-                ", user_phone='" + user_phone + '\'' +
-                ", user_account='" + user_account + '\'' +
-                ", user_img_face_path='" + user_img_face_path + '\'' +
-                ", u_NationID='" + u_NationID + '\'' +
-                ", U_Province='" + U_Province + '\'' +
-                ", U_City='" + U_City + '\'' +
-                ", f_friend_type_id='" + f_friend_type_id + '\'' +
-                ", f_friend_groups_id=" + f_friend_groups_id +
-                '}';
     }
 
     public long getUser_id() {
@@ -186,4 +200,6 @@ public class Friend {
     public void setF_friend_groups_id(long f_friend_groups_id) {
         this.f_friend_groups_id = f_friend_groups_id;
     }
+
+
 }

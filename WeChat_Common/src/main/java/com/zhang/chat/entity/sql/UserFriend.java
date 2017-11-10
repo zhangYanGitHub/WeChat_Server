@@ -42,14 +42,16 @@ public class UserFriend {
     }
 
     public UserFriend(User user, User friend) {
-        this.f_firend_id = friend.getM_Id();
-        f_user_id = user.getM_Id();
+        this.f_firend_id = friend.getM_id();
+        f_user_id = user.getM_id();
         f_friend_type_id = friend.getUser_name();
         f_friend_groups_id = 1;
     }
+
     public UserFriend(long f_firend_id) {
         this.f_firend_id = f_firend_id;
     }
+
     public void setFriend_state(boolean friend_state) {
         this.friend_state = friend_state;
     }

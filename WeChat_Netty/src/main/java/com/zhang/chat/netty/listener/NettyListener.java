@@ -21,23 +21,18 @@ import javax.servlet.http.HttpSessionBindingEvent;
 public class NettyListener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
 
-    private NettyConfig config;
-    private Thread thread;
-    private Service service;
+    private static NettyConfig config;
+    private static Thread thread;
+    private static Service service;
 
     // Public constructor is required by servlet spec
     public NettyListener() {
     }
+    public static void main(String[] args) throws InterruptedException {
+        start();
+    }
 
-    // -------------------------------------------------------
-    // ServletContextListener implementation
-    // -------------------------------------------------------
-    public void contextInitialized(ServletContextEvent sce) {
-      /* This method is called when the servlet context is
-         initialized(when the Web application is deployed).
-         You can initialize servlet context related data here.
-      */
-
+    private static void start() {
         System.err.println("nettyListener Startup!");
         thread = new Thread() {
             @Override
@@ -60,13 +55,31 @@ public class NettyListener implements ServletContextListener,
         System.err.println("nettyListener end!");
     }
 
+    // -------------------------------------------------------
+    // ServletContextListener implementation
+    // -------------------------------------------------------
+    public void contextInitialized(ServletContextEvent sce) {
+      /* This method is called when the servlet context is
+         initialized(when the Web application is deployed).
+         You can initialize servlet context related data here.
+      */
+
+        start();
+    }
+
     public void contextDestroyed(ServletContextEvent sce) {
       /* This method is invoked when the Servlet Context
          (the Web application) is undeployed or
          Application Server shuts down.
       */
-        service.shutDown();
-        config.shutdown();
+        if (service != null) {
+            service.shutDown();
+            service = null;
+        }
+        if (config != null) {
+            config.shutdown();
+            config = null;
+        }
 
     }
 

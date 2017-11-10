@@ -32,6 +32,7 @@ public class Verification {
      */
     private int m_state;
 
+    private String message;
 
 
     public Verification() {
@@ -41,16 +42,14 @@ public class Verification {
         this.m_id = m_id;
     }
 
-    public Verification(long m_id, long user_friend_id, long friend_user_id, int m_state
+    public Verification(long m_id, long user_friend_id, long friend_user_id, int m_state,String message
     ) {
         this.m_id = m_id;
         this.user_friend_id = user_friend_id;
         this.friend_user_id = friend_user_id;
         this.m_state = m_state;
-
+        this.message = message;
     }
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,6 +77,13 @@ public class Verification {
         this.friend_user_id = friend_user_id;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public int getM_state() {
         return m_state;

@@ -21,9 +21,11 @@ public class MessageDaoImpl extends BaseDao implements MessageDao {
     public List<Message> getMessage(long user_id) {
         List<Message> list = sessionFactory.getCurrentSession().createQuery("select new Message(m.m_ID,m.m_PostMessages,m.m_status,m.m_Time,m.m_MessagesTypeID," +
                 "m.m_ToUserID,m.m_FromUserID) " +
-                "from Message m where m.m_status = ? and m.m_FromUserID = ?")
+                "from Message m where m.m_status = ? and (m.m_FromUserID = ? or m.m_ToUserID = ?)")
                 .setParameter(0, 4)
-                .setParameter(1, user_id).list();
+                .setParameter(1, user_id)
+                .setParameter(2, user_id)
+                .list();
         updateMessage(list);
         return list;
 

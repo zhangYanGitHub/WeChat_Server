@@ -63,12 +63,14 @@ public class Message implements Comparable<Message> {
         isLatest = latest;
     }
 
+
     public boolean isLatest() {
         return isLatest;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "M_ID")
     public long getM_ID() {
         return M_ID;
     }
@@ -77,6 +79,7 @@ public class Message implements Comparable<Message> {
         M_ID = m_ID;
     }
 
+    @Column(name = "M_PostMessages")
     public String getM_PostMessages() {
         return M_PostMessages;
     }
@@ -85,6 +88,7 @@ public class Message implements Comparable<Message> {
         M_PostMessages = m_PostMessages;
     }
 
+    @Column(name = "M_status")
     public int getM_status() {
         return M_status;
     }
@@ -93,6 +97,7 @@ public class Message implements Comparable<Message> {
         M_status = m_status;
     }
 
+    @Column(name = "M_Time")
     public String getM_Time() {
         return M_Time;
     }
@@ -101,6 +106,7 @@ public class Message implements Comparable<Message> {
         M_Time = m_Time;
     }
 
+    @Column(name = "M_MessagesTypeID")
     public int getM_MessagesTypeID() {
         return M_MessagesTypeID;
     }
@@ -109,6 +115,7 @@ public class Message implements Comparable<Message> {
         M_MessagesTypeID = m_MessagesTypeID;
     }
 
+    @Column(name = "M_ToUserID")
     public long getM_ToUserID() {
         return M_ToUserID;
     }
@@ -117,6 +124,7 @@ public class Message implements Comparable<Message> {
         M_ToUserID = m_ToUserID;
     }
 
+    @Column(name = "M_FromUserID")
     public long getM_FromUserID() {
         return M_FromUserID;
     }

@@ -1,13 +1,11 @@
 package com.zhang.chat.entity.sql;
 
-import com.zhang.chat.entity.request.RequestUser;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user_info_t")
 public class User {
-    private long M_Id;
+    private long m_id;
     private long uu_id;
     private String user_name;
     private int user_sex = -1;
@@ -51,12 +49,12 @@ public class User {
     }
 
     public User(long m_Id) {
-        M_Id = m_Id;
+        this.m_id = m_Id;
     }
 
     public User(long user_id, String user_name, int user_sex, String user_desc, String user_phone,
                 String user_img_face_path, String u_NationID, String U_Province, String U_City) {
-        this.M_Id = user_id;
+        this.m_id = user_id;
         this.user_name = user_name;
         this.user_sex = user_sex;
         this.user_desc = user_desc;
@@ -77,12 +75,12 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long getM_Id() {
-        return M_Id;
+    public long getM_id() {
+        return m_id;
     }
 
-    public void setM_Id(long m_Id) {
-        M_Id = m_Id;
+    public void setM_id(long m_Id) {
+        m_id = m_Id;
     }
 
     public long getUu_id() {
@@ -238,7 +236,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "M_Id=" + M_Id +
+                "M_Id=" + m_id +
                 ", uu_id=" + uu_id +
                 ", user_name='" + user_name + '\'' +
                 ", user_sex=" + user_sex +

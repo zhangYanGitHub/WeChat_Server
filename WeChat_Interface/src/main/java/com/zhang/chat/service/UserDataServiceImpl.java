@@ -1,12 +1,11 @@
 package com.zhang.chat.service;
 
-import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.base.BaseService;
+import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.dao.interfaces.FriendDao;
 import com.zhang.chat.dao.interfaces.MessageDao;
 import com.zhang.chat.dao.interfaces.UserDao;
 import com.zhang.chat.dao.interfaces.VerificationDao;
-import com.zhang.chat.entity.request.RequestUser;
 import com.zhang.chat.entity.response.Friend;
 import com.zhang.chat.entity.response.MainData;
 import com.zhang.chat.entity.response.ResList;
@@ -18,6 +17,7 @@ import com.zhang.chat.utils.Constant;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 //注入服务
@@ -36,13 +36,14 @@ public class UserDataServiceImpl extends BaseService<MainData> implements UserDa
 
     @Override
     public BaseFeed<MainData> getUserData(User requestUser) {
-        long m_id = requestUser.getM_Id();
+        long m_id = requestUser.getM_id();
         User user = userDao.get(requestUser);
         List<Friend> fiendList = friendDao.getFiendList(m_id);
         ResList<Verification> list = verificationDao.getList(m_id);
         List<Message> message = messageDao.getMessage(m_id);
         List<Message> messageRecord = messageDao.getMessageRecord(m_id);
         int number = 0;
+        ArrayList<MainData.MessageList> messageLists = new ArrayList<MainData.MessageList>();
         for (Message message1 : messageRecord) {
             MainData.MessageList messageList = new MainData.MessageList();
             messageList.setMessage(message1);
@@ -55,13 +56,14 @@ public class UserDataServiceImpl extends BaseService<MainData> implements UserDa
                 }
             }
             messageList.setNumber(number);
+            messageLists.add(messageList);
         }
 
         MainData mainData = new MainData();
         mainData.setFriends(fiendList);
         mainData.setMessageList(message);
         mainData.setVerifications(list.getList());
-        mainData.setMessageList(messageRecord);
+        mainData.setLatestMessage(messageLists);
         mainData.setUser(user);
 
         feed.setData(mainData);

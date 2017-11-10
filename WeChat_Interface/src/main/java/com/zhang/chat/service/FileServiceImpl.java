@@ -1,8 +1,8 @@
 package com.zhang.chat.service;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.base.BaseService;
+import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.entity.request.FileUploadBean;
 import com.zhang.chat.service.interfaces.FileService;
 import com.zhang.chat.utils.Constant;

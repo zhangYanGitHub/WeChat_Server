@@ -15,9 +15,25 @@ import javax.annotation.Resource;
 public class UserDataAction implements ModelDriven<User> {
     User requestUser = new User();
 
+    public void setRequestUser(User requestUser) {
+        this.requestUser = requestUser;
+    }
+
+    public User getRequestUser() {
+        return requestUser;
+    }
+
     @Resource
     UserDataService userDataService;
     private BaseFeed<MainData> baseFeed;
+
+    public void setBaseFeed(BaseFeed<MainData> baseFeed) {
+        this.baseFeed = baseFeed;
+    }
+
+    public BaseFeed<MainData> getBaseFeed() {
+        return baseFeed;
+    }
 
     @Override
     public User getModel() {

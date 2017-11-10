@@ -64,12 +64,12 @@ public class AddFriend extends BaseNettyService {
                 break;
             case 2:
                 dao.update(deserialize);
-                addFirend(deserialize);
                 break;
             case 3:
                 dao.update(deserialize);
                 break;
         }
+        addFirend(deserialize);
     }
 
     private void online(MessageHolder messageHolder) {
@@ -93,7 +93,6 @@ public class AddFriend extends BaseNettyService {
                         LogUtils.info(AddFriend.class, "拒绝添加 转发失败");
                     }
                 });
-                addFirend(deserialize);
                 break;
             case 2:
                 dao.update(deserialize);
@@ -105,7 +104,7 @@ public class AddFriend extends BaseNettyService {
                     @Override
                     public void success() {
                         LogUtils.info(AddFriend.class, "通过朋友验证 转发成功");
-                        addFirend(deserialize);
+
 
                     }
 
@@ -133,6 +132,7 @@ public class AddFriend extends BaseNettyService {
                 });
                 break;
         }
+        addFirend(deserialize);
     }
 
     private void addFirend(Verification deserialize) {
@@ -143,7 +143,7 @@ public class AddFriend extends BaseNettyService {
 
         UserFriend userFriend = new UserFriend(user, friend);
         UserFriend userFriend1 = new UserFriend(friend, user);
-        if (deserialize.getM_state() == 2) {
+        if (deserialize.getM_state() != 2 ) {
             userFriend.setFriend_state(false);
             userFriend1.setFriend_state(false);
         }
@@ -153,8 +153,8 @@ public class AddFriend extends BaseNettyService {
         Friend friend1 = new Friend(userFriend, friend);
         Friend friend2 = new Friend(userFriend1, user);
 
-        Channel channel = ConnPool.query(String.valueOf(user.getM_Id()));
-        Channel friendchannel = ConnPool.query(String.valueOf(friend.getM_Id()));
+        Channel channel = ConnPool.query(String.valueOf(user.getM_id()));
+        Channel friendchannel = ConnPool.query(String.valueOf(friend.getM_id()));
 
         //给发起发送朋友消息
         if (channel != null) {

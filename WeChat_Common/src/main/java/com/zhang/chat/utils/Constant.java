@@ -32,7 +32,7 @@ public class Constant {
     /**
      * User_id == null
      */
-    public static final int RESPONSE_ERROR_CODE_1001 = 10001;
+    public static final int RESPONSE_ERROR_CODE_1001 = 1001;
 
     /**
      * 用户头像文件夹

@@ -1,5 +1,6 @@
 package com.zhang.chat.utils;
 
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 /**
@@ -15,28 +16,32 @@ public class LogUtils {
 		 if(DEBUG){
 			 return;
 		 }
-		 Logger logger = Logger.getLogger(clazz);
-		 logger.info(message);
+		 try {
+			 Logger logger = LogManager.getLogger(clazz);
+			 logger.info(message);
+		 }catch (Exception e){
+		 	e.printStackTrace();
+		 }
 	 }
 	 public static void error(Class clazz ,String message){
 		 if(DEBUG){
 			 return;
 		 }
-		 Logger logger = Logger.getLogger(clazz);
+		 Logger logger = LogManager.getLogger(clazz);
 		 logger.error(message);
 	 }
 	 public static void debug(Class clazz ,String message){
 		 if(DEBUG){
 			 return;
 		 }
-		 Logger logger = Logger.getLogger(clazz);
+		 Logger logger = LogManager.getLogger(clazz);
 		 logger.debug(message);
 	 }
 	 public static void warn(Class clazz ,String message){
 		 if(DEBUG){
 			 return;
 		 }
-		 Logger logger = Logger.getLogger(clazz);
+		 Logger logger = LogManager.getLogger(clazz);
 		 logger.warn(message);
 	 }
 }

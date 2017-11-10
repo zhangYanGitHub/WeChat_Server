@@ -1,7 +1,6 @@
 package com.zhang.chat.action;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.zhang.chat.base.BaseAction;
 import com.zhang.chat.entity.request.VerificationRequest;
 import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.entity.response.ResList;
@@ -17,7 +16,7 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 
 @Controller
 @Scope("prototype")
-public class VerificationAction extends BaseAction implements ModelDriven<VerificationRequest> {
+public class VerificationAction implements ModelDriven<VerificationRequest> {
     @Resource
     private VerificationService verificationService;
     private VerificationRequest verifivationRequest = new VerificationRequest();

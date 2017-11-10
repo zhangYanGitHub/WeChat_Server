@@ -1,7 +1,6 @@
 package com.zhang.chat.action;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.zhang.chat.base.BaseAction;
 import com.zhang.chat.entity.response.BaseFeed;
 import com.zhang.chat.entity.request.FileUploadBean;
 import com.zhang.chat.service.interfaces.FileService;
@@ -21,7 +20,7 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
  */
 @Controller
 @Scope("prototype")
-public class FileAction extends BaseAction implements ModelDriven<FileUploadBean> {
+public class FileAction implements ModelDriven<FileUploadBean> {
     @Resource
     private FileService fileService;
     //上传参数

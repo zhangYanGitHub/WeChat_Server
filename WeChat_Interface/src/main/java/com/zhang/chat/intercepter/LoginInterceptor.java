@@ -41,7 +41,7 @@ public class LoginInterceptor extends MethodFilterInterceptor {
             String taken_value = cookies[0].getValue();
             Header token = headerService.selectByM_id(user);
             if (token == null) {
-                LogUtils.error(this.getClass(), "m_id = " + userId + "  未存入cookies");
+                LogUtils.error(this.getClass(), "M_Id = " + userId + "  未存入cookies");
             } else {
                 if ((StrUtil.isNotBlank(token.getToken()) || StrUtil.isNotBlank(taken_value))
                         && taken_value.equals(token.getToken())) {

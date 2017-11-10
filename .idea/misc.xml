@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/WeChat_Common" />
     <file type="web" url="file://$PROJECT_DIR$/WeChat_Interface" />
+    <file type="web" url="file://$PROJECT_DIR$/WeChat_Netty" />
     <file type="web" url="file://$PROJECT_DIR$/WeChat_Web" />
   </component>
   <component name="MavenProjectsManager">

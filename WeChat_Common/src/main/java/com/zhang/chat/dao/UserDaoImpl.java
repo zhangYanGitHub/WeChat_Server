@@ -20,11 +20,11 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     @Override
     public User selectByUu_idAndPassword(User user) {
         List<User> list = sessionFactory.getCurrentSession()
-                .createQuery(" select new com.zhang.chat.entity.sql.User(user.m_Id) from com.zhang.chat.entity.sql.User user where user.uu_id = ? ")
+                .createQuery(" select new com.zhang.chat.entity.sql.User(user.m_id) from com.zhang.chat.entity.sql.User user where user.uu_id = ? ")
                 .setParameter(0, user.getUu_id()).list();
         if (ListUtil.isEmpty(list)) return null;
         User user1 = list.get(0);
-        return (User) sessionFactory.getCurrentSession().get(User.class, user1.getM_Id());
+        return (User) sessionFactory.getCurrentSession().get(User.class, user1.getM_id());
 
     }
 
@@ -36,7 +36,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public User get(User user) {
-        return (User) sessionFactory.getCurrentSession().get(User.class, user.getM_Id());
+        return (User) sessionFactory.getCurrentSession().get(User.class, user.getM_id());
 
     }
 
@@ -50,18 +50,20 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         List<UserFriend> list1 = sessionFactory.getCurrentSession().createQuery("select new UserFriend(uf.f_firend_id) " +
                 "from UserFriend uf where uf.f_user_id = ?")
                 .setParameter(0, user_id).list();
-        List<User> list = sessionFactory.getCurrentSession().createQuery("select new User(u.m_Id," +
+        List<User> list = sessionFactory.getCurrentSession().createQuery("select new User(u.m_id," +
                 "u.user_name,u.user_sex,u.user_desc,u.user_phone" +
-                "                ,u.user_img_face_path,u.u_NationID,u.u_Province,u.u_City) from User u where u.user_name like ? " +
-                "or u.user_real_name like ? or u.user_phone like ?")
+                " ,u.user_img_face_path,u.u_NationID,u.u_Province,u.u_City) from User u where " +
+                "(u.user_name like ? or u.user_real_name like ? or u.user_phone like ? )and u.m_id != ?")
                 .setParameter(0, String.valueOf("%" + searchKey + "%"))
                 .setParameter(1, String.valueOf("%" + searchKey + "%"))
-                .setParameter(2, String.valueOf("%" + searchKey + "%")).list();
+                .setParameter(2, String.valueOf("%" + searchKey + "%"))
+                .setParameter(3, user_id)
+                .list();
         for (User user : list) {
             user.setUser_real_name("");
             user.setUser_password("");
-            for (UserFriend userFriend:list1){
-                if(user.getM_Id() == userFriend.getF_firend_id()){
+            for (UserFriend userFriend : list1) {
+                if (user.getM_id() == userFriend.getF_firend_id()) {
                     list.remove(user);
                 }
             }
