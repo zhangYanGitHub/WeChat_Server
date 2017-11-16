@@ -11,6 +11,7 @@ import com.zhang.chat.entity.response.MainData;
 import com.zhang.chat.entity.response.ResList;
 import com.zhang.chat.entity.sql.Message;
 import com.zhang.chat.entity.sql.User;
+import com.zhang.chat.entity.sql.UserFriend;
 import com.zhang.chat.entity.sql.Verification;
 import com.zhang.chat.service.interfaces.UserDataService;
 import com.zhang.chat.utils.Constant;
@@ -37,6 +38,8 @@ public class UserDataServiceImpl extends BaseService<MainData> implements UserDa
     @Override
     public BaseFeed<MainData> getUserData(User requestUser) {
         long m_id = requestUser.getM_id();
+        User friend = new User();
+
         User user = userDao.get(requestUser);
         List<Friend> fiendList = friendDao.getFiendList(m_id);
         ResList<Verification> list = verificationDao.getList(m_id);
@@ -47,7 +50,18 @@ public class UserDataServiceImpl extends BaseService<MainData> implements UserDa
         for (Message message1 : messageRecord) {
             MainData.MessageList messageList = new MainData.MessageList();
             messageList.setMessage(message1);
-
+//            if (message1.getM_ToUserID() == m_id) {
+//                friend.setM_id(message1.getM_FromUserID());
+//
+//            } else {
+//                friend.setM_id(message1.getM_FromUserID());
+//            }
+//            User user1 = userDao.get(friend);
+//
+//            messageList.setFriend_id(user1.getM_id());
+//            UserFriend friend1 = friendDao.getFriend(m_id, user1.getM_id());
+//            messageList.setFriend_nick_name(friend1.getF_friend_type_id());
+//            messageList.setImg_face_path(user1.getUser_img_face_path());
             for (Message message2 : message) {
                 if (message1 == null || message2 == null) continue;
                 if (message1.getM_FromUserID() == message2.getM_FromUserID()
@@ -58,7 +72,7 @@ public class UserDataServiceImpl extends BaseService<MainData> implements UserDa
             messageList.setNumber(number);
             messageLists.add(messageList);
         }
-
+        user.setUser_password("**********");
         MainData mainData = new MainData();
         mainData.setFriends(fiendList);
         mainData.setMessageList(message);

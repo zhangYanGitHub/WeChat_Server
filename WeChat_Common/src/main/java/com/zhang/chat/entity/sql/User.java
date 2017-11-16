@@ -44,6 +44,7 @@ public class User {
      * (用户状态ID)    外键
      */
     private int U_UserState;
+    private String address_message;
 
     public User() {
     }
@@ -65,7 +66,7 @@ public class User {
         this.U_City = U_City;
     }
 
-    public User(int user_sex,String user_phone,String user_real_name,String user_password, String user_name) {
+    public User(int user_sex, String user_phone, String user_real_name, String user_password, String user_name) {
         this.user_sex = user_sex;
         this.user_phone = user_phone;
         this.user_real_name = user_real_name;
@@ -255,5 +256,13 @@ public class User {
                 ", U_UserState=" + U_UserState +
                 ", type=" + type +
                 '}';
+    }
+
+    public String getAddress_message() {
+        return address_message;
+    }
+
+    public void setAddress_message(String address_message) {
+        this.address_message = address_message;
     }
 }

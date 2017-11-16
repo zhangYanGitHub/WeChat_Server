@@ -4,6 +4,7 @@ import com.zhang.chat.base.BaseDao;
 import com.zhang.chat.dao.interfaces.FriendDao;
 import com.zhang.chat.entity.response.Friend;
 import com.zhang.chat.entity.sql.UserFriend;
+import com.zhang.chat.utils.ListUtil;
 import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,5 +45,16 @@ public class FriendDaoImp extends BaseDao implements FriendDao {
     }
 
     public void addFriend(UserFriend friend) {
+    }
+
+    @Override
+    public UserFriend getFriend(long user_id, long friend_id) {
+        Session session = sessionFactory.openSession();
+        List<UserFriend> list = session.createQuery("select new UserFriend(u.f_friend_type_id) from UserFriend u where u.f_user_id = ? and u.f_firend_id = ?")
+                .setParameter(0, user_id)
+                .setParameter(1, friend_id).list();
+
+        if (ListUtil.isEmpty(list)) return null;
+        return list.get(0);
     }
 }

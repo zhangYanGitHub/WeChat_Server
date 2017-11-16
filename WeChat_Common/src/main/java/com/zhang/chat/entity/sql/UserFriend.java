@@ -41,6 +41,10 @@ public class UserFriend {
     public UserFriend() {
     }
 
+    public UserFriend(String f_friend_type_id) {
+        this.f_friend_type_id = f_friend_type_id;
+    }
+
     public UserFriend(User user, User friend) {
         this.f_firend_id = friend.getM_id();
         f_user_id = user.getM_id();

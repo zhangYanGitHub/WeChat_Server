@@ -23,4 +23,6 @@ public interface FriendDao {
     List<Friend> getFiendList(long user_id);
 
     void addFriend(UserFriend friend);
+
+    UserFriend getFriend(long user_id, long friend_id);
 }

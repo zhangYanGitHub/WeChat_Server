@@ -148,7 +148,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
                 String path = sc.getRealPath(Constant.USER_IMG_FACE_DIR);
 
                 if (StrUtil.isBlank(user.getUser_img_face_path())) { //第一次上传头像
-                    user.setUser_img_face_path(user.getUser_img_face_path());
+                    user.setUser_img_face_path(user1.getUser_img_face_path());
                 } else {
                     String[] split = user1.getUser_img_face_path().split("/");
                     if (split != null && split.length > 0) {
@@ -165,7 +165,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
                 user.setUser_phone(user1.getUser_phone());
                 break;
             case User.UPDATE_PASSWORD:
-                user.setUser_phone(user1.getUser_phone());
+                user.setUser_password(user1.getUser_password());
                 break;
             case User.UPDATE_DESC:
                 user.setUser_desc(user1.getUser_desc());
@@ -174,6 +174,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
                 user.setU_NationID(user1.getU_NationID());
                 user.setU_Province(user1.getU_Province());
                 user.setU_City(user1.getU_City());
+                user.setAddress_message(user1.getAddress_message());
                 break;
         }
         userDao.update(user);
