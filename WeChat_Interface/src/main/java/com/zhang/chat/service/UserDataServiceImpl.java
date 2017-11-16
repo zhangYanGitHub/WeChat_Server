@@ -38,7 +38,6 @@ public class UserDataServiceImpl extends BaseService<MainData> implements UserDa
     @Override
     public BaseFeed<MainData> getUserData(User requestUser) {
         long m_id = requestUser.getM_id();
-        User friend = new User();
 
         User user = userDao.get(requestUser);
         List<Friend> fiendList = friendDao.getFiendList(m_id);
