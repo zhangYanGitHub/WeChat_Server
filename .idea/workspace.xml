@@ -8,20 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23c4e6e2-50f8-4700-b465-01a8c2c545ca" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeChat_Interface/target/WeChat_Interface/resources/image/face/USER_FACE_IMG_0_1510192685134.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeChat_Interface/target/WeChat_Interface/resources/image/face/USER_FACE_IMG_0_1510217039680.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeChat_Interface/target/WeChat_Interface/resources/image/face/USER_FACE_IMG_0_1510281107973.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeChat_Interface/target/WeChat_Interface/resources/image/face/USER_FACE_IMG_1_1510191658486.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeChat_Interface/target/WeChat_Interface/resources/image/face/USER_FACE_IMG_1_1510191914165.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeChat_Interface/target/WeChat_Interface/resources/image/face/USER_FACE_IMG_1_1510191978303.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/dao/FriendDaoImp.java" afterPath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/dao/FriendDaoImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/dao/interfaces/FriendDao.java" afterPath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/dao/interfaces/FriendDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/entity/response/MainData.java" afterPath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/entity/response/MainData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/entity/sql/User.java" afterPath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/entity/sql/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/entity/sql/UserFriend.java" afterPath="$PROJECT_DIR$/WeChat_Common/src/main/java/com/zhang/chat/entity/sql/UserFriend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeChat_Interface/src/main/java/com/zhang/chat/service/UserDataServiceImpl.java" afterPath="$PROJECT_DIR$/WeChat_Interface/src/main/java/com/zhang/chat/service/UserDataServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeChat_Interface/src/main/java/com/zhang/chat/service/UserServiceImpl.java" afterPath="$PROJECT_DIR$/WeChat_Interface/src/main/java/com/zhang/chat/service/UserServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -133,8 +120,8 @@
       <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WeChat_Interface/src/main/java/com/zhang/chat/service/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="150" column="74" lean-forward="false" selection-start-line="150" selection-start-column="53" selection-end-line="150" selection-end-column="74" />
+            <state relative-caret-position="-167">
+              <caret line="137" column="37" lean-forward="true" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -252,7 +239,7 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="1386" />
     <option name="height" value="788" />
   </component>
@@ -903,7 +890,7 @@
       <workItem from="1510276822938" duration="5583000" />
       <workItem from="1510536132272" duration="1703000" />
       <workItem from="1510722311380" duration="7472000" />
-      <workItem from="1510794587290" duration="3874000" />
+      <workItem from="1510794587290" duration="4163000" />
     </task>
     <servers />
   </component>
@@ -919,7 +906,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115529000" />
+    <option name="totallyTimeSpent" value="115818000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -931,7 +918,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5063966" order="7" side_tool="true" content_ui="tabs" />
@@ -955,7 +943,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21002132" sideWeight="0.4960894" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21002132" sideWeight="0.4960894" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2867804" sideWeight="0.5039106" order="2" side_tool="true" content_ui="tabs" />
@@ -1451,8 +1439,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WeChat_Interface/src/main/java/com/zhang/chat/service/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="150" column="74" lean-forward="false" selection-start-line="150" selection-start-column="53" selection-end-line="150" selection-end-column="74" />
+        <state relative-caret-position="-167">
+          <caret line="137" column="37" lean-forward="true" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
           <folding />
         </state>
       </provider>
