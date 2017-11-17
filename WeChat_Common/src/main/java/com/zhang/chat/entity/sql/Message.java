@@ -49,14 +49,14 @@ public class Message implements Comparable<Message> {
     public Message() {
     }
 
-    public Message(long m_ID, String m_PostMessages, int m_status, String m_Time, int m_MessagesTypeID, long m_ToUserID, long m_FromUserID) {
-        M_ID = m_ID;
-        M_PostMessages = m_PostMessages;
-        M_status = m_status;
-        M_Time = m_Time;
-        M_MessagesTypeID = m_MessagesTypeID;
-        M_ToUserID = m_ToUserID;
-        M_FromUserID = m_FromUserID;
+    public Message(long M_ID, String M_PostMessages, int M_status, String m_Time, int m_MessagesTypeID, long m_ToUserID, long m_FromUserID) {
+       this.M_ID = M_ID;
+       this.M_PostMessages = M_PostMessages;
+       this.M_status = M_status;
+       this.M_Time = m_Time;
+       this.M_MessagesTypeID = m_MessagesTypeID;
+       this.M_ToUserID = m_ToUserID;
+       this.M_FromUserID = m_FromUserID;
     }
 
     public void setLatest(boolean latest) {

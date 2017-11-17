@@ -71,6 +71,7 @@ public class UserDataServiceImpl extends BaseService<MainData> implements UserDa
             messageList.setNumber(number);
             messageLists.add(messageList);
         }
+        user.setU_UserState(1);
         user.setUser_password("**********");
         MainData mainData = new MainData();
         mainData.setFriends(fiendList);
